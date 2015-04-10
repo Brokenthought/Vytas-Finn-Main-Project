@@ -1,0 +1,16 @@
+.land 
+{
+	fill: #fff;
+	stroke: #ccc;
+}
+
+.state 
+{
+	fill: #ccc;
+	stroke: #666;
+}
+
+#ireland{
+	margin: 0 auto;
+	text-align: center;
+}
