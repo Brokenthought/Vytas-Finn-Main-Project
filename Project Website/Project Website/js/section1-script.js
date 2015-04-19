@@ -29,7 +29,11 @@ $.ajax({
 
 
 $(document).ajaxStop(function () {
- 
+
+
+   
+
+
     var areas;
     
     var path;
@@ -39,63 +43,80 @@ $(document).ajaxStop(function () {
                .attr("height", 600);
     d3.json("ireland.json", function (data) {
 
-         var group = canvas.selectAll("g")
-        .data(data.features)
-        .enter()
-        .append("g")
+        var group = canvas.selectAll("g")
+       .data(data.features)
+       .enter()
+       .append("g")
 
         var projection = d3.geo.mercator().scale(3000).translate([700, 3600]);
         path = d3.geo.path().projection(projection);
-         areas = group.append("path")
-        .attr("d", path)
-        .attr("class", "area")
-        .attr("fill", "green");
+        areas = group.append("path")
+       .attr("d", path)
+       .attr("class", "area")
+       .attr("fill", "green");
 
         areas.transition()
         .duration(5000)
         .each("end", function () { d3.select(this).attr("fill", "green"); })
     });
+    var IntervalId
+    $("#startButton").click(function () {
 
-    var new_value = 0;
-    $('slider').foundation('slider', 'set_value', new_value);
+        IntervalId = setInterval(function () { start() }, 1000);
+       
+    });
+
+    var i = 0;
+    function start()
+    {
+        $('#slider').foundation('slider', 'set_value', i);
+       
+        scale(i)
+        i++;
+        if (i > 23) { clearInterval(IntervalId); i = 0; }
+      
+    }
 
     $(document).foundation({
         slider: {
+          
             on_change: function () {
 
-                var year = $('#slider').attr('data-slider');
-                var count =0;
-                county = 0;
-              
-
-                if (areas != null) {
-
-                    areas.transition().duration(1000)
-                    .attr("transform", function (d) {
-                        var centroid = path.centroid(d),
-                        x = centroid[0],
-                        y = centroid[1];
-
-                        county = counties[count] * 24;
-                        count++;
-
-                        year = parseInt(year);
-                        console.log(array.dataset.value[county] + "     " + array.dataset.value[county + year] + "   ");
-                        return "translate(" + x + "," + y + ")"
-                        + "scale(" + array.dataset.value[county + year] / array.dataset.value[county] + ")"
-                        + "translate(" + -x + "," + -y + ")"
-                        + "translate(" + array.dataset.value[county + year] / array.dataset.value[county] * 10 + "," + 2 + ")";
-                    })
-                }
-
-                   
-
-              
-
-                
-            }
-        }
+                var year = parseInt($('#slider').attr('data-slider'));
+                scale(year);
+                i = year;
+                clearInterval(IntervalId);
+            }                                          
+}     
     });
+
+
+    function scale(year) {
+
+        var count = 0;
+        county = 0;
+   
+        if (areas != null) {
+
+            areas.transition().duration(2000)
+            .attr("transform", function (d) {
+                var centroid = path.centroid(d),
+                x = centroid[0],
+                y = centroid[1];
+
+                county = counties[count] * 24;
+                count++;
+
+                console.log(array.dataset.value[county] + "     " + array.dataset.value[county + year] + "   ");
+                return "translate(" + x + "," + y + ")"
+                + "scale(" + array.dataset.value[county + year] / array.dataset.value[county] + ")"
+                + "translate(" + -x + "," + -y + ")";
+              //  + "translate(" + array.dataset.value[county + year] / array.dataset.value[county] * 10 + "," + 2 + ")";
+            })
+
+        }
+        $('#year').text((year*10) + 1800);
+    }
 
 });
 
