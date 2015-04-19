@@ -28,12 +28,12 @@
 <body>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script><body>
     <script>
-	
+	//http://localhost/Vytas-Finn-Main-Project/Project%20Website/PopulationScale.html
 	
 	var array;
 		var counties = [1,25,13,14,26,2,20,15,3,4,5,21,16,6,7,22,8,27,9,23,24,17,19,10,11,12];
         $.ajax({
-        url: "http://localhost/tut19/population.json",
+        url: "http://localhost/Vytas-Finn-Main-Project/Project%20Website/population.json",
         dataType: 'json',
         jsonpCallback: 'MyJSONPCallback', 
         success: function(data){
@@ -47,7 +47,7 @@
 	var year = 1;
 	var e = 0;
 	 
-	 $(document).ajaxStop(function () 
+	$(document).ajaxStop(function () 
 	{
 	var num = 0;
 	for(var i = 25; i< array.dataset.value.length; i+=24)
@@ -60,7 +60,7 @@
 	}
 	console.log(num);
 	
-	});
+	
 
 	   	  	 
 	var population = [1,2,3,4,5,67,8,8,];
@@ -87,7 +87,7 @@
 			var areas = group.append("path")
 				.attr("d",path)
 				.attr("class","area")
-				.attr("fill","steelblue");
+				.attr("fill","green");
 				
 	   
 			areas.transition()
@@ -111,19 +111,22 @@
 					 console.log(array.dataset.value[county] + "     " + array.dataset.value[county+year] + "   ");
        				 return "translate(" + x + "," + y + ")"
            			 + "scale(" + array.dataset.value[county+i] /array.dataset.value[county] + ")"
-            		 + "translate(" + -x + "," +-y + ")";
-					 
+            		 + "translate(" + -x + "," +-y + ")"	
+                     + "translate(" + array.dataset.value[county+i] /array.dataset.value[county]*10 + "," + 2 + ")"	;				 
      			})
+
 
 
       					}
 				
 		 //Made
-		//console.log(areas);
-		
-		
+		//console.log(areas);				
 		});
+		});
+	
 
+		
+	
 
 	</script>
 
