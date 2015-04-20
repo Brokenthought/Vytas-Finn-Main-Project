@@ -1,6 +1,12 @@
 var array;
+<<<<<<< HEAD
 var countyNames = ["Carlow", "Cavan", "Clare", "Cork", "Derry", "Donegal", "Dublin", "Galway", "Kerry", "Kildare", "Kilkenny", "Laois", "Leitrim", "Limerick", "Longford", "Louth", "Mayo", "Meath", "Monaghan", "Offaly", "Roscommon", "Sligo", "Tipperary", "Waterford", "Westmeath", "Wexford", "Wicklow"];
 var counties = [1, 25, 13, 14, 26, 2, 20, 15, 3, 4, 5, 21, 16, 6, 7, 22, 8, 27, 9, 23, 24, 17, 19, 10, 11, 12];
+=======
+var counties = [1, 25, 13, 14, 26,  2, 20, 15, 3, 4, 5, 21, 16, 6, 7, 22, 8, 27, 9, 23, 24, 17, 19, 10, 11, 12];
+
+var population = [1, 2, 3, 4, 5, 67, 8, 8, ];
+>>>>>>> origin/master
 
 var county = 24;
 var year = 1;
@@ -105,6 +111,7 @@ $(document).ajaxStop(function () {
           
             on_change: function () {
 
+<<<<<<< HEAD
                 year = parseInt($('#slider').attr('data-slider'));
                 scale(year);
                 i = year;
@@ -113,6 +120,11 @@ $(document).ajaxStop(function () {
 }     
     });
 
+=======
+                   
+                $('#year').text((year*10) + 1800);
+              
+>>>>>>> origin/master
 
     function scale(year) {
         var count = 0;
