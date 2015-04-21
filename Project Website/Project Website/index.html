@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
 	<link rel="stylesheet" href="foundation/css/foundation.css" />
 	<script src="foundation/js/vendor/modernizr.js"></script>
 	<script src="foundation/js/vendor/jquery.js"></script>
@@ -11,7 +12,12 @@
 	<script src="foundation/js/foundation/foundation.slider.js"></script>
 	<script src="http://d3js.org/d3.v3.js"></script>
 	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
 	<link rel="stylesheet" href="style.css">
+	 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+          rel="stylesheet">
 	<style type="text/css">
 	</style>
 </head>
@@ -37,16 +43,20 @@
 		<div class="large-9 push-3 columns">
 		    <div id="ireland"></div>	
 			<div>
+				
 				<!-- slider -->
 				<div class="range-slider" data-slider data-options=" start: 0; end: 23; initial: 0;" id="slider" >
 					<span class="range-slider-handle" role="slider" tabindex="0"></span>
 					<span class="range-slider-active-segment"></span>					
-				</div>				
+				</div>			
+	         <button id='startButton'    >
+             <i class='fa fa-play'></i>
+               </button>				
 				  <div class="small-2 medium-1 columns">
                   <span id="year"></span>
                 </div>
 			</div>
-			<a  id = "startButton"class="button round">Start</a>
+	
 		</div class="large-3 push-3 columns">
 		
 	
@@ -87,11 +97,10 @@
 	</footer>
 
 	<script type="text/javascript" src="js/section1-script.js"></script>
-	<script src="foundation/js/vendor/jquery.js">
+		<script src="foundation/js/vendor/jquery.js">
 	</script>
 	<script src="foundation/js/foundation.min.js"></script>
 	
-	<script>
-	</script>
+
 </body>
 </html>
