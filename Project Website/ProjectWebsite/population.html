@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="foundation/css/foundation.css" />
+  <script src="foundation/js/vendor/modernizr.js"></script>
+  <script src="foundation/js/vendor/jquery.js"></script>
+  <script src="foundation/js/foundation/foundation.js"></script>
+  <script src="foundation/js/foundation/foundation.slider.js"></script>
+  <script src="http://d3js.org/d3.v3.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Header Area -->
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Data Visulisation</a></h1>
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li><a href="index.html">Introduction</a></li>
+        <li class="active"><a href="population.html">Population</a></li>
+        <li ><a href="economy.html">Economy</a></li>
+        <li ><a href="section-3.html">Viz Vitas</a></li>
+        <li ><a href="section-4.html">Viz Fin</a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <div class="row">
+    <br>
+
+    <h1>Population</h1>
+    <h4 class="subheader" style="width: 300px; float: left;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Ut magnam itaque laudantium suscipit dolor debitis, nihil cupiditate eveniet repellat accusamus quas vitae odio ex reiciendis explicabo, ad,
+      atque sint ducimus.</h4>
+
+    <!-- Content Area -->
+
+      <div id="ireland"></div>
+
+        <span id="year">1800</span>
+        <!-- slider -->
+        <div class="range-slider" data-slider data-options=" start: 0; end: 23; initial: 0;" id="slider" >
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
+          <span class="range-slider-active-segment"></span>
+        </div>
+
+        <button id="startButton">
+          <i class='fa fa-play'></i>
+        </button>
+      </div>
+
+
+      <!-- Footer Area -->
+      <footer class="row" >
+        <p>&#169; Copyright The Big V Dog & Grandmaster Finn</p>
+      </footer>
+
+      <!-- Scripts -->
+      <script type="text/javascript" src="js/population.js"></script>
+      <script src="foundation/js/vendor/jquery.js">
+      </script>
+      <script src="foundation/js/foundation.min.js"></script>
+    </body>
+    </html>
