@@ -91,6 +91,7 @@ $(document).ajaxStop(function () {
 
         for (var i = 0; i < nodes.length ; i++) {
 
+            closeNodes = [{ index: 0, dist: 9999 }, { index: 0, dist: 9999 }, { index: 0, dist: 9999 }, { index: 0, dist: 9999 }];
 
             for (var j = 0; j < 4 ; j++) {
 
@@ -100,6 +101,7 @@ $(document).ajaxStop(function () {
                     var dy = nodes[i].y - nodes[k].y;
                     var dist = Math.sqrt(dx * dx + dy * dy);
 
+                    if (dist < closeNodes[j].dist){
                         closeNodes[j].index = k;
                         closeNodes[j].dist = dist;
                     }
