@@ -1,3 +1,6 @@
+var width = 500;
+var height = 600;
+
 var array;
 var counties = [1, 25, 13, 14, 26, 2, 20, 15, 3, 4, 5, 21, 16, 6, 7, 22, 8, 27, 9, 23, 24, 17, 19, 10, 11, 12];
 var county = 24;
@@ -27,7 +30,7 @@ $(document).ajaxStop(function () {
     })
 
     var force;
-    var nodes = [];
+    var nodes = [{ x: width/2, y: height/2, fixed: true }];
     var links = [];
 
 
@@ -37,13 +40,13 @@ $(document).ajaxStop(function () {
     var i = 0;
     var path;
 
-   
+
 
 
     var canvas = d3.select("#ireland")
                .append("svg")
-               .attr("width", 500)
-               .attr("height", 600);
+               .attr("width", width)
+               .attr("height", height);
     d3.json("ireland.json", function (data) {
 
         var group = canvas.selectAll("g")
@@ -61,7 +64,7 @@ $(document).ajaxStop(function () {
        .attr("class", "area")
        .attr("fill", "green")
        .attr("stroke-width", "1")
-       .attr("id", function (d,i) {
+       .attr("id", function (d, i) {
            return "id" + i;
        })
        .on('mouseover', function () {
@@ -84,13 +87,28 @@ $(document).ajaxStop(function () {
             var centroid = path.centroid(d),
                 x = centroid[0],
                 y = centroid[1];
-            nodes.push({ x: x, y: y, charge: 0});
+            nodes.push({ x: x, y: y, charge: 0 });
         });
 
         var closeNodes;
 
-        for (var i = 0; i < nodes.length ; i++) {
 
+
+
+        //for (var i = 0; i < nodes.length ; i++) {
+
+        //    var dx = nodes[i].x - nodes[0].x;
+        //    var dy = nodes[i].y - nodes[0].y;
+        //    var dist = Math.sqrt(dx * dx + dy * dy);
+        //    console.log(dist);
+        //    links.push({ source: i, target: 0, length: dist });
+        //}
+
+
+
+
+        for (var i = 1; i < nodes.length ; i++) {
+          
             closeNodes = [{ index: 0, dist: 9999 }, { index: 0, dist: 9999 }, { index: 0, dist: 9999 }, { index: 0, dist: 9999 }];
 
             for (var j = 0; j < 4 ; j++) {
@@ -101,12 +119,15 @@ $(document).ajaxStop(function () {
                     var dy = nodes[i].y - nodes[k].y;
                     var dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < closeNodes[j].dist){
+                    if (dist < closeNodes[j].dist
+                        && dist != closeNodes[0].dist && dist != closeNodes[1].dist
+                        && dist != closeNodes[2].dist && dist != closeNodes[3].dist) {
+                        
                         closeNodes[j].index = k;
                         closeNodes[j].dist = dist;
                     }
                 }
-              //  console.log(closeNodes[j].dist + "here" );
+
                 links.push({ source: i, target: closeNodes[j].index, length: closeNodes[j].dist });
             }
         }
@@ -120,12 +141,16 @@ $(document).ajaxStop(function () {
             return d.length;
         })
 
-        // force.gravity(1);
+         force.gravity(0);
 
 
-        force.charge(function (d) {
-            return d.charge;
-        })
+        force.charge(0);
+
+        //force.charge(function (d) {
+        //    return d.charge;
+        //})
+
+
         var link = canvas.selectAll('.link')
         .data(links)
         .enter().append('line')
@@ -136,24 +161,24 @@ $(document).ajaxStop(function () {
         .enter().append('circle')
         .attr('class', 'node');
 
-        force.on('start', function () {
+        force.on('tick', function () {
             var county;
             areas.transition().duration(2000)
-            .attr("transform", function (d,i) {
+            .attr("transform", function (d, i) {
 
                 var centroid = path.centroid(d),
                 px = centroid[0],
                 py = centroid[1],
-                x = nodes[i].x - centroid[0],
-                y = nodes[i].y - centroid[1];
+                x = nodes[i+1].x - centroid[0],
+                y = nodes[i+1].y - centroid[1];
 
-                county = counties[i] * 24;          
+                county = counties[i] * 24;
                 var size = array.dataset.value[county + year] / array.dataset.value[county];
 
                 return "translate(" + px + "," + py + ")"
                        + "scale(" + size + ")"
                        + "translate(" + -px + "," + -py + ")"
-                       +  "translate(" + x + "," + y + ")";
+                       + "translate(" + x + "," + y + ")";
 
             })
             node.attr('r', 5)
@@ -174,9 +199,9 @@ $(document).ajaxStop(function () {
 
 
     function scale(year) {
-       
+
         var county;
-    
+
         if (oldYear != year && areas != null) {
             areas.each(function (d, i) {
 
@@ -184,24 +209,23 @@ $(document).ajaxStop(function () {
                 x = centroid[0],
                 y = centroid[1];
 
-                county = counties[i] * 24;              
+                county = counties[i] * 24;
 
-                var size = array.dataset.value[county + year] / array.dataset.value[county + year -1];
+                var size = array.dataset.value[county + year] / array.dataset.value[county + year - 1];
 
-                if (size < 1)
-                {
+                if (size < 1) {
                     size = 0;
                 }
                 else {
-                    size = size*-400;
+                    size = size * -400;
                 }
 
-               // nodes[i].charge = size;
+                // nodes[i].charge = size;
 
                 //for (var e = 0; e < links.length; e++) {
-                    
+
                 //    if (links[e].source == nodes[i]) {
-                       
+
 
                 //        links[e].length = links[e].length*size;
                 //     }
@@ -210,12 +234,12 @@ $(document).ajaxStop(function () {
                 //return "translate(" + x + "," + y + ")"
                 //    + "scale(" + array.dataset.value[county + year] / array.dataset.value[county] + ")"
                 //    + "translate(" + -x + "," + -y + ")";
-               
-              //  return "scale(" + array.dataset.value[county + year] / array.dataset.value[county] + ")";
-                   
+
+                //  return "scale(" + array.dataset.value[county + year] / array.dataset.value[county] + ")";
+
             })
             force.start();
-          
+
 
             oldYear = year;
         }
