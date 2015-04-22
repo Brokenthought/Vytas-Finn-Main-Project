@@ -26,7 +26,7 @@ document.getElementById("DataSetInfo").innerHTML = "Primary Income (Euro Million
 
 
 $.ajax({
-    url: "http://localhost/Vytas-Finn-Main-Project/Project Website/income.json",
+    url: "income.json",
     dataType: 'json',
     jsonpCallback: 'MyJSONPCallback',
     success: function (data) {
@@ -36,7 +36,7 @@ $.ajax({
 });
 
 $('input:radio[name="pokemon"]').change(function(){
-    
+
 
 
     if($(this).val() == 'DisposableIncome'){
@@ -106,7 +106,7 @@ $('input:radio[name="pokemon"]').change(function(){
 
 
 $(document).ajaxStop(function () {
-    
+
     var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
@@ -118,44 +118,44 @@ $(document).ajaxStop(function () {
         return "<strong>" + countyNames[countyId] + ":</strong> <span style='color:red'>"+dataSet+":"+ array.dataset.value[county+year+category] + "</span>";
     })
     var num = 0;
-   
+
     var countyId = 0;
     var areas;
     var i = 0;
     var path;
     var canvas = d3.select("#ireland")
                .append("svg")
-               .attr("width", 500)
-               .attr("height", 600);           
+               .attr("width", 400)
+               .attr("height", 400);
         d3.json("ireland.json", function (data) {
         var group = canvas.selectAll("g")
        .data(data.features)
        .enter()
        .append("g")
-       .attr("stroke", "black")  
-        group.call(tip);        
-        var projection = d3.geo.mercator().scale(3000).translate([700, 3600]);
+       .attr("stroke", "black")
+        group.call(tip);
+        var projection = d3.geo.mercator().scale(3000).translate([600, 3500]);
         path = d3.geo.path().projection(projection);
         areas = group.append("path")
        .attr("d", path)
        .attr("class", "area")
        .attr("fill", "green")
        .attr("stroke-width", "1")
-       .attr("id", function (d,i) {                                     
+       .attr("id", function (d,i) {
            return  "id" + i;
        })
-     
+
        .on('mouseover', function () {
 
 
-           
-        
+
+
            countyId = parseInt(d3.select(this).attr("id").substr(d3.select(this).attr("id").indexOf("d") + 1));
            tip.show();
            d3.select(this)
              .transition()
              .duration(300)
-             .attr('stroke-width', 3);            
+             .attr('stroke-width', 3);
        })
         .on('mouseout', function () {
             tip.hide();
@@ -178,12 +178,12 @@ $(document).ajaxStop(function () {
 
                 var count =0;
                 county = 0;
-                
+
                 category = parseInt(category);
                 if (areas != null) {
 
                     areas.transition().duration(1000)
-                    .attr("fill", function (d) 
+                    .attr("fill", function (d)
                     {
                         county = counties[count]*195;
                         count++;
@@ -192,15 +192,13 @@ $(document).ajaxStop(function () {
                         //console.log(array.dataset.value[county+year+category]+"   "+((array.dataset.value[county+year+category]-difference)/division)*255);
                         //console.log(year + "over here" + county)
                         return("rgb(200,"+(((array.dataset.value[county+year+category]-difference)/division)*255)+","+(((array.dataset.value[county+year+category]-difference)/division)*255)+")");
-                     
+
                     })
                 }
 
-                
+
             }
         }
     });
 
 });
-
-

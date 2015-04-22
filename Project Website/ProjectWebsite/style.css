@@ -1,10 +1,11 @@
-.land 
+
+.land
 {
 	fill: #fff;
 	stroke: #ccc;
 }
 
-.state 
+.state
 {
 	fill: #ccc;
 	stroke: #666;
@@ -32,7 +33,7 @@
   width: 100%;
   line-height: 1;
   color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
+  content: "\0000";
   position: absolute;
   text-align: center;
 }
@@ -56,10 +57,31 @@
 }
 
 button {
-    position: absolute;
     width: 30px;
 }
 button#slow {
     margin-left: 40px;
 }
 
+#sticky_footer {
+		padding-left: 30px;
+		color: white;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: black;
+}
+
+footer{
+	clear: both;
+}
+
+.redtowhite{
+	background: -webkit-linear-gradient(left, red, white); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, red, white); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, red, white); /* For Firefox 3.6 to 15 */
+background: linear-gradient(right, red, white); /* Standard syntax */
+	width: 100%;
+	height: 20px;
+}
