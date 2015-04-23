@@ -1,9 +1,9 @@
 var array;
-
+var begin = 0;
 
 
 $.ajax({
-    url: "industry.json",
+    url: "json_files/industry.json",
     dataType: 'json',
     jsonpCallback: 'MyJSONPCallback',
     success: function (data) 
@@ -23,7 +23,7 @@ $(document).ajaxStop(function ()
 
 
 var size = 1;
-var root = {};
+
 
 
 var bubble = d3.layout.pack().sort(null).size([480,460]).padding(1.5);
@@ -40,31 +40,20 @@ var svg = d3.select("#ireland")
 var year =0;
 
 
-$(document).foundation({
-        slider: {
-            on_change: function () {
 
-                 year = parseInt( $('#slider').attr(('data-slider')));
-
-                year = year*3;
-
-               // bubble();
-
-}}});
 
 //bubble();
 
 
 
-function bubble()
-{}
+var root = {};
 root.name = "Bublles";
 root.children = new Array();
 for (i=0;i<34;i++){
   var item = {};
-  //item.name = i;
-  item.value = +array.dataset.value[(i*90)+9+year];
- // item.group = 1;
+  //item.name = array.dataset.dimension["Industry Sector"].category.label[i]);
+  item.value = array.dataset.value[(i*90)+9+year];
+  //item.group = 1;
   //size = size + 1;
   root.children[i]=item;
 }
@@ -88,11 +77,29 @@ var colour = d3.scale.category10();
     .style("text-anchor", "middle")
     .text(function(d) { return d.name; });
 
-  
-
-
 });
+ 
+
+$(document).foundation({
+        slider: {
+            on_change: function () {
+
+                 year = parseInt( $('#slider').attr(('data-slider')));
+
+                year = year*3;
+                
+               //bubble();
+
+}}});
 
 
+
+
+function bubble()
+{
+
+
+
+}
         
 
