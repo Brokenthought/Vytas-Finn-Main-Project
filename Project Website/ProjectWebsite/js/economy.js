@@ -26,7 +26,7 @@ document.getElementById("DataSetInfo").innerHTML = "Primary Income (Euro Million
 
 
 $.ajax({
-    url: "income.json",
+    url: "json_files/income.json",
     dataType: 'json',
     jsonpCallback: 'MyJSONPCallback',
     success: function (data) {
@@ -127,7 +127,7 @@ $(document).ajaxStop(function () {
                .append("svg")
                .attr("width", 400)
                .attr("height", 400);
-        d3.json("ireland.json", function (data) {
+    d3.json("json_files/ireland.json", function (data) {
         var group = canvas.selectAll("g")
        .data(data.features)
        .enter()
@@ -139,7 +139,6 @@ $(document).ajaxStop(function () {
         areas = group.append("path")
        .attr("d", path)
        .attr("class", "area")
-       .attr("fill", "green")
        .attr("stroke-width", "1")
        .attr("id", function (d,i) {
            return  "id" + i;
