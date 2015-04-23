@@ -3,6 +3,7 @@ var height = 600;
 
 var array;
 var counties = [1, 25, 13, 14, 26, 2, 20, 15, 3, 4, 5, 21, 16, 6, 7, 22, 8, 27, 9, 23, 24, 17, 19, 10, 11, 12];
+var countyNames = ["Carlow", "Cavan", "Clare", "Cork", "Donegal", "Dublin", "Galway", "Kerry", "Kildare", "Kilkenny", "Laois", "Leitrim", "Limerick", "Longford", "Louth", "Mayo", "Meath", "Monaghan", "Offlay", "Roscommon", "Sligo", "Tipperary", "Waterford", "Westmeath", "Wexford", "Wicklow"];
 var county = 24;
 var year = 1;
 var oldYear = 0;
@@ -25,9 +26,40 @@ $(document).ajaxStop(function () {
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function (d) {
-        var county = countyId * 24;
-        return "<strong>" + (countyId - 1) + ":</strong> <span style='color:white'> Population " + array.dataset.value[county + year] + "</span>";
+        var county= counties[countyId] * 24;
+
+        var change = array.dataset.value[county + year]/array.dataset.value[county]  ;
+     
+      //  change = 1 - change;
+       
+
+        change =  change-1;
+
+        change = Math.round((change) * 100);
+        if (year == 0) {
+            return "<strong>" + countyNames[countyId] + ":</strong> Population " + array.dataset.value[county + year] + "</span>";
+        }
+        else if(change >= 0)
+        {
+            return "<strong>" + countyNames[countyId] + ":</strong>  Population " + array.dataset.value[county + year] + "  <br> Change since 1841: +<span style='color:green'>" + change + "%</span>";
+        }
+        else
+        {
+            return "<strong>" + countyNames[countyId] + ":</strong>  Population " + array.dataset.value[county + year] + "  <br> Change since 1841: <span style='color:red'>" + change + "%</span>";
+        }
     });
+
+    var HistoryTip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset(function (d) {              
+        if(year == 5)
+        {[-10,50]}
+        
+    })
+    .html(function (d) {            
+            return "<strong>  Hello there :</strong>  Population ";
+        
+    });   
 
     var countyId = 0;
     var areas;
@@ -69,6 +101,7 @@ $(document).ajaxStop(function () {
              .transition()
              .duration(300)
              .attr('stroke-width', 3);
+             clearInterval(IntervalId);
        })
         .on('mouseout', function () {
             tip.hide();
@@ -81,12 +114,10 @@ $(document).ajaxStop(function () {
     });
 
 
-    var dublin = 20;
+    var date = 0;
     function scale(year) {
         var county;
-
-
-       
+    
         if (oldYear != year && areas != null) {
             oldYear = year;
 
@@ -112,7 +143,6 @@ $(document).ajaxStop(function () {
                         dx = 30;
                         dy = 0;
                     }
-
                 }
                 if (i == 8 && year > 14) {
                     dx = 38;
@@ -136,24 +166,30 @@ $(document).ajaxStop(function () {
 
             });
         }
-        $('#year').text("Year: "+  ((year * 10) + 1800));
+        if (year < 8) {
+            $('#year').text("Year: " + ((year * 10) + 1841));
+        }
+        else if (year < 11) {
+            $('#year').text("Year: " + ((year * 10) + 1846));
+        }
+        else {
+            $('#year').text("Year: " + (((year-10) * 5) + 1946));
+        }
+
         $('#population').text("Total population: "+ array.dataset.value[year]);
     }
 
-
-    var slider = $('#slider');
-    slider.call(tip);
     $(document).foundation({
         slider: {
             on_change: function () {
-
-
                 year = parseInt($('#slider').attr('data-slider'))
 
-
-               // 
-               // tip.show();
                 scale(year);
+
+                if (year == 5)
+                {
+                    HistoryTip.show();
+                }
                 i = year;
                 clearInterval(IntervalId);
             }
@@ -161,12 +197,11 @@ $(document).ajaxStop(function () {
     });
     var IntervalId
     $("#startButton").click(function () {
-        IntervalId = setInterval(function () { start() }, 4000);
+        IntervalId = setInterval(function () { start() }, 1000);
     });
 
     function start() {
         $('#slider').foundation('slider', 'set_value', i);
-
         scale(i)
         i++;
         if (i > 23) { clearInterval(IntervalId); i = 0; }
