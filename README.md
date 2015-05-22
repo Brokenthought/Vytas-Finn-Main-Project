@@ -29,11 +29,13 @@ Problems connecting to to Php database using JavaScript posed quiet an issue the
 Require.js
 =======
 http://requirejs.org/
+
 Require.js use the key word require to require modules to the browser you simply go to website download require.js class and placed in your js folder but the problem posed with this was that require.js class is 38 thousands lines of code and error is thrown in there it fails to download sql module so sql commands are not recognized.
 
 Browserify
 =======
 http://browserify.org/
+
 Browserify bundles up modules together in to one bundle so instead acquiring modules like jQuery, d3, foundation, including sql etc. You simply install Browserify using npm throw gitBash (which proved to be best command line tool).But this posed same problem error would be thrown in bundle which contains 30k+ lines of code
 
 Foundation (Frame work)
@@ -45,6 +47,7 @@ Npm (module manager)
 GDAL
 =======
 http://www.gdal.org/
+
 GDAL was needed to implement org2org to run TopoJson to make JSON files from shape files and merge Json files so the include county name etc.
 Command to install
 Brew install gdal 
