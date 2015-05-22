@@ -1,22 +1,22 @@
 Contents
 ==========
 
-1.PHP
+<br> &nbsp;1.PHP
 <br> &nbsp; 2.Require.js
 <br> &nbsp; 3.Browserify
-4.Foundation (Frame work)
-5.NPM (module manager)
-6.Js.Node
-7.GDAL
-8.org2org
-9.TopoJson
-10.FWTools (command line)
-11.GitBash (command line)
-12.HTML
-13.CSS
-14.JavaScript (D3)
-15.SON, TopoJson, GEOJson
-16.Conclusion
+<br> &nbsp;4.Foundation (Frame work)
+<br> &nbsp;5.NPM (module manager)
+<br> &nbsp;6.Js.Node
+<br> &nbsp;7.GDAL
+<br> &nbsp;8.org2org
+<br> &nbsp;9.TopoJson
+<br> &nbsp;10.FWTools (command line)
+<br> &nbsp;11.GitBash (command line)
+<br> &nbsp;12.HTML
+<br> &nbsp;13.CSS
+<br> &nbsp;14.JavaScript (D3)
+<br> &nbsp;15.SON, TopoJson, GEOJson
+<br> &nbsp;16.Conclusion
 
 
 PHP
@@ -42,6 +42,7 @@ Browserify bundles up modules together in to one bundle so instead acquiring mod
 
 Foundation (Frame work)
 =======
+http://foundation.zurb.com/
 
 Npm (module manager)
 =======
@@ -57,6 +58,8 @@ Brew install gdal
 
 Node.js
 ========
+https://nodejs.org/
+
 Used to build server and router, so the website could be ruined on port, eliminates using Wamp localhost service.
 
 TopoJson
@@ -68,6 +71,8 @@ Part of GDAL used to merge files
 
 GitBash
 =======
+https://openhatch.org/
+
 Command line tool used to implement all commands like installing sql module (npm install sql)
 
 HTML
