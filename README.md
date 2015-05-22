@@ -19,7 +19,7 @@ Contents
 
 
 PHP
-=======
+======
 Php database consists of 3 scripts connect, stockDownloader and analysis_a.
 Connect script simply connects to database named rainbow_candy, stockDownloader goes on yahoo Finance website and downloads stock information on specified companies , which are in tickerMaster and places them in txtFiles folder. Than information is parsed so it can be stored in database once it’s stored some analysis is performed.
 
