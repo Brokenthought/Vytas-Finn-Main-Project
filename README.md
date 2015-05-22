@@ -1,32 +1,21 @@
 Contents
 ==========
 1.PHP
-1.Require.js
-2.Browserify
-
-3.Foundation (Frame work)
-
-4.NPM (module manager)
-
-5.Js.Node
-
-6.GDAL
-
-7.org2org
-
-8.TopoJson
-
-9.FWTools (command line)
-
-10.GitBash (command line)
-
-11.HTML
-
-12.CSS
-
-13.JavaScript (D3)
-
-14.SON, TopoJson, GEOJson
+2.Require.js
+3.Browserify
+4.Foundation (Frame work)
+5.NPM (module manager)
+6.Js.Node
+7.GDAL
+8.org2org
+9.TopoJson
+10.FWTools (command line)
+11.GitBash (command line)
+12.HTML
+13.CSS
+14.JavaScript (D3)
+15.SON, TopoJson, GEOJson
+16.Conclusion
 
 
 PHP
@@ -95,3 +84,6 @@ JSON, TopoJson, GeoJson
 Used to draw maps and represent information, GeoJson is used for representing country’s and geographical structures its stores information a bit more efficient than JSON format. To represent all other data we used data from this website.
 http://www.cso.ie/webserviceclient/
 All data is in JSON format on following website so some parsing was done that data was represented using D3 visualization.
+
+Conclusion
+=======
