@@ -2,8 +2,8 @@ Contents
 ==========
 
 <br> &nbsp;1.PHP
-<br> &nbsp; 2.Require.js
-<br> &nbsp; 3.Browserify
+<br> &nbsp;2.Require.js
+<br> &nbsp;3.Browserify
 <br> &nbsp;4.Foundation (Frame work)
 <br> &nbsp;5.NPM (module manager)
 <br> &nbsp;6.Js.Node
@@ -15,7 +15,7 @@ Contents
 <br> &nbsp;12.HTML
 <br> &nbsp;13.CSS
 <br> &nbsp;14.JavaScript (D3)
-<br> &nbsp;15.SON, TopoJson, GEOJson
+<br> &nbsp;15.JSON, TopoJson, GEOJson
 <br> &nbsp;16.Conclusion
 
 
