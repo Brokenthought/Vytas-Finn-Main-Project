@@ -95,11 +95,32 @@ $(document).foundation({
 
 
 
-function bubble()
+
+mysql = require(['mysql']);
+
+var conn;
+conn = mysql.createConnection({
+
+    host : "localhost",
+    user : "root",
+    password : "",
+    database : "rainbow_candy"
+    //port: 7000 // Might need this to connect to port
+});
+
+var queryString = "Select * from ge";
+conn.query(queryString, function(error,results)
 {
+    if(error)
+    {
+        throw error;
+    }
+    else
+    {
+       console.log(results);
+    }
+});
 
 
-
-}
-        
+      
 
