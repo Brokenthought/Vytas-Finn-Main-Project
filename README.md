@@ -32,7 +32,8 @@ txtFiles where the files are stored in there raw format once downloaded from yah
 Connect script simply connects to database named rainbow_candy, stockDownloader goes on yahoo Finance website and downloads stock information on specified companies , which are in tickerMaster and places them in txtFiles folder. Than information is parsed so it can be stored in database once it’s stored some analysis is performed.
 
 
-Problems connecting to to Php database using JavaScript posed quiet an issue there were few solution how to solve this problem;
+
+Problems connecting to to Php database using JavaScript posed quiet an issue there were few solutions how to solve this problem one of them was to use Require.js or Browserify.
 
 
 Require.js
