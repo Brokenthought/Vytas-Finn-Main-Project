@@ -23,7 +23,7 @@ PHP
 ======
 Php database consists of 3 scripts connect (php); stock_Downloader (php) and analysis_a (php) and tickerMaster.txt, also include txtFiles where downloaded data is stored in txt format.
 Connect is small script that connects to database called rainbow_candy using 127.0.0.1 as IP address root as username and empty space as password (no password).
-
+<mark>stock_Downloader</mark> 
 stock_Downloader does the heavy work it call connect class  , than goes on http://finance.yahoo.com/ website downloads data specified in tickerMaster.txt file achieves this by dynamically forming URL string you just substitute few variables in URL and rename them to download different company data ranging different time spans of your desire. Than data needs to be parsed before it can be stored in database it is parsed used php explode function to separate long string into individual number/words.
 
 tickerMaster.txt contains all the names of the company’s that you want to download company name is a ticker used in yahoo. Finance website the name has to be exact as in website or it won’t work
