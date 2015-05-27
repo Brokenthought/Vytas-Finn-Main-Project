@@ -196,15 +196,28 @@ $(document).ajaxStop(function () {
         }
     });
     var IntervalId
+    var play = true;
     $("#startButton").click(function () {
-        IntervalId = setInterval(function () { start() }, 1000);
+        if (play) {
+
+          //  $('#slider').foundation('slider', 'set_value', i);
+        //    i++;
+            IntervalId = setInterval(function () { start() }, 1000);
+            play = false;
+        }
+        else
+        {
+            clearInterval(IntervalId);
+            play = true;
+        }
     });
 
     function start() {
+        i++;
         $('#slider').foundation('slider', 'set_value', i);
         scale(i)
-        i++;
-        if (i > 23) { clearInterval(IntervalId); i = 0; }
+        
+        if (i > 22) { clearInterval(IntervalId);}
 
     }
 
