@@ -91,7 +91,7 @@ JavaScript (D3)
 =======
 
 
-JSON, TopoJson, GeoJson
+JSON, TopoJson, GeoJson, ShapeFile (.shp)
 =======
 Used to draw maps and represent information, GeoJson is used for representing country’s and geographical structures its stores information a bit more efficient than JSON format. To represent all other data we used data from this website.
 http://www.cso.ie/webserviceclient/
