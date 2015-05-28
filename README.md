@@ -104,6 +104,7 @@ JSON, TopoJson, GeoJson, ShapeFile (.shp)
 Used to draw maps and represent information, GeoJson is used for representing country’s and geographical structures its stores information a bit more efficient than JSON format. To represent all other data we used data from this website.
 http://www.cso.ie/webserviceclient/
 All data is in JSON format on following website so some parsing was done that data was represented using D3 visualization.
+When creating JSON country files information was extracted from ShapeFiles.
 
 Conclusion
 =======
