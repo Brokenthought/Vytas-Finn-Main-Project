@@ -83,7 +83,8 @@ Part of GDAL used to merge files
 FWTools
 =======
 
-Some modules where needed to be installed using command line and came across this command line tool in unlikely place on NASA website. Nasa use shape for special body’s etc. But tool  showed to be insufficient for what I was trying to do and later on went with GitBash command line
+Some modules where needed to be installed using command line and came across this command line tool in unlikely place on NASA website. Nasa use shape for special body’s etc. But tool  showed to be insufficient for what I was trying to do and later on went with GitBash command line. Here is link ti website
+
 http://gcmd.gsfc.nasa.gov/KeywordSearch/Metadata.do?Portal=GCMD&MetadataType=1&MetadataView=Full&KeywordPath=&EntryId=FWTools
 
 GitBash
