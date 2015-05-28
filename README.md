@@ -67,6 +67,15 @@ Brew install gdal
 org2org 
 =======
 
+Used to merge Json files in command prompt commands like
+
+ogr2ogr \
+  -f GeoJSON \
+  -where "ISO_A2 = 'GB' AND SCALERANK < 8" \
+  country.json \
+  ne_10m_populated_places.shp
+
+
 Node.js
 ========
 https://nodejs.org/
