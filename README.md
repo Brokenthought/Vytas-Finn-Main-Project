@@ -108,3 +108,5 @@ When creating JSON country files information was extracted from ShapeFiles.
 
 Conclusion
 =======
+
+This Project was great experience on how website structure works and what’s involved in website development, how to maintain website and deployed and use latest technology’s to improve it and combine technology’s. Gave use huge insight in all different tools used to develop websites and how many different approaches can be taken.
