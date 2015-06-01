@@ -55,6 +55,8 @@ http://foundation.zurb.com/
 Npm (module manager)
 =======
 
+https://www.npmjs.com/
+
 GDAL
 =======
 http://www.gdal.org/
